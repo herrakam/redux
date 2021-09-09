@@ -5,6 +5,7 @@ import { decrease, increase, setDiff } from "../modules/counter";
 
 function CounterContainer() {
   const { number, diff } = useSelector((state) => ({
+    //useSelector를 통한 상태 조회
     number: state.counter.number,
     diff: state.counter.diff,
   }));

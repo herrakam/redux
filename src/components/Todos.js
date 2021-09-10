@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TodoItem({ todo, onToggle }) {
+const TodoItem = React.memo(function TodoItem({ todo, onToggle }) {
   return (
     <li
       style={{ textDecoration: todo.done ? "line-through" : "none" }}
@@ -9,9 +9,9 @@ function TodoItem({ todo, onToggle }) {
       {todo.text}
     </li>
   );
-}
+});
 
-function TodoList({ todos, onToggle }) {
+const TodoList = React.memo(function TodoList({ todos, onToggle }) {
   return (
     <ul>
       {todos.map((todo) => (
@@ -19,7 +19,7 @@ function TodoList({ todos, onToggle }) {
       ))}
     </ul>
   );
-}
+});
 
 function Todos({ todos, onCreate, onToggle }) {
   const [text, setText] = useState("");
@@ -46,4 +46,4 @@ function Todos({ todos, onCreate, onToggle }) {
   );
 }
 
-export default Todos; // 이 함수들 중 todos만 내보내겠다!(어떠한 이름으로 내보내겠다가 아님!!)
+export default React.memo(Todos); // 이 함수들 중 todos만 내보내겠다!(어떠한 이름으로 내보내겠다가 아님!!)
